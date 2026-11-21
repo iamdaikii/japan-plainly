@@ -1,0 +1,118 @@
+{
+ "updated": "2026-11-21T10:19:01.498Z",
+ "card": "https://claude.ai/artifact/QvMbHmCbCDZ7KqFmSShkYr",
+ "days": [
+  {
+   "date": "2026-11-22",
+   "cat": "録音の日",
+   "catKey": "rec",
+   "title": "1回目の1分録音（基準をとる日）",
+   "q": null,
+   "a": null,
+   "en": "Hi, I'm Daiki. I'm asking 1,000 people in Japan how to speak English.",
+   "enJa": "いつもの一言から始めればOK",
+   "rec": true,
+   "steps": [
+    "いつもの声かけ自己紹介（名前・1,000人に聞いていること・なぜ）を英語で1分話して録音。",
+    "聞き返して、3秒以上止まった回数を数える。",
+    "19:10のチェックで「止まった回数◯回」と送る。今日の回数が来週からの比較の基準になります。"
+   ],
+   "fact": null
+  },
+  {
+   "date": "2026-11-23",
+   "cat": "日本",
+   "catKey": "jp",
+   "title": "雷門の大提灯は約700kg",
+   "q": "雷門を1960年に建て直したお金は、誰が出した？",
+   "a": "松下幸之助（今のパナソニックの創業者）。",
+   "en": "This lantern weighs about 700 kilograms. The gate burned down in 1866, and the founder of Panasonic paid to rebuild it in 1960.",
+   "enJa": "この提灯は約700kg。門は1866年に焼けて、1960年にパナソニックの創業者がお金を出して建て直した。",
+   "rec": false,
+   "steps": null,
+   "fact": "大提灯は高さ3.9m、重さ約700kg。表に「雷門」、裏に「風雷神門」と書いてある。"
+  },
+  {
+   "date": "2026-11-24",
+   "cat": "時事",
+   "catKey": "news",
+   "title": "10月の訪日客、単月で過去最多",
+   "q": "2026年10月、日本に一番多く来た国・地域は？",
+   "a": "韓国（103.6万人、前年同月比+19.4%）。",
+   "en": "About 3.9 million people visited Japan in October. That's a new monthly record, even though visitors from China fell by almost half.",
+   "enJa": "10月は約390万人が日本に来た。中国からの客がほぼ半分に減ったのに、1か月の過去最多。",
+   "rec": false,
+   "steps": null,
+   "fact": "2026年10月の訪日客は391.3万人（推計）。前年同月より0.4%増えて、1か月の数で過去最多。"
+  },
+  {
+   "date": "2026-11-25",
+   "cat": "日本",
+   "catKey": "jp",
+   "title": "お寺で拍手はしない。神社の作法は意外と新しい",
+   "q": "「2礼2拍手1礼」が広まったのは、いつごろから？",
+   "a": "明治の神職の作法がもとで、戦後に神社本庁がすすめて広まった。",
+   "en": "At a shrine, people bow twice, clap twice, and bow once more. At a temple, you just put your hands together. And the shrine way is newer than most Japanese think.",
+   "enJa": "神社は2礼2拍手1礼。寺は手を合わせるだけ。しかも神社の作法は、日本人が思っているより新しい。",
+   "rec": false,
+   "steps": null,
+   "fact": "神社でよく見る「2礼2拍手1礼」は、明治の神職の作法がもと。戦後に神社本庁がすすめて広まった。"
+  },
+  {
+   "date": "2026-11-26",
+   "cat": "お金",
+   "catKey": "money",
+   "title": "NISAは「税金がかからない箱」",
+   "q": "NISAで一生に入れられる上限は？",
+   "a": "1,800万円（成長投資枠はそのうち1,200万円まで）。",
+   "en": "NISA is a tax-free investment account in Japan. You can put in up to 3.6 million yen a year, and you don't pay tax on the profit.",
+   "enJa": "NISAは日本の非課税の投資口座。1年に最大360万円入れられて、利益に税金がかからない。",
+   "rec": false,
+   "steps": null,
+   "fact": "ふつうは投資でもうけると税金がかかる。NISAという口座（箱）の中で買った株や投資信託なら、もうけに税金がかからない。"
+  },
+  {
+   "date": "2026-11-27",
+   "cat": "起業",
+   "catKey": "biz",
+   "title": "開業届と青色申告、出す順番",
+   "q": "青色申告承認申請書の期限は？",
+   "a": "開業の日から2か月以内（1/1〜1/15に開業した場合は3/15まで）。",
+   "en": "When you start a business in Japan, you file a notice with the tax office. If you want a bigger tax deduction, you also apply for the 'blue return' within two months.",
+   "enJa": "日本で事業を始めたら税務署に届けを出す。税金の控除を大きくしたいなら、2か月以内に青色申告も申請する。",
+   "rec": false,
+   "steps": null,
+   "fact": "個人で商売を始めたら、税務署に「開業届（個人事業の開業・廃業等届出書）」を出す。窓口のほか、e-Taxや郵送でも出せる。"
+  },
+  {
+   "date": "2026-11-28",
+   "cat": "日本",
+   "catKey": "jp",
+   "title": "日の丸が法律で国旗になったのは1999年",
+   "q": "日の丸の円の直径は、縦の何分のいくつ？",
+   "a": "5分の3。",
+   "en": "The Japanese flag only became official by law in 1999. Even the size of the red circle is fixed: three-fifths of the flag's height.",
+   "enJa": "日本の国旗が法律で決まったのは1999年。赤い円の大きさまで決まっていて、縦の5分の3。",
+   "rec": false,
+   "steps": null,
+   "fact": "日の丸が法律で国旗と決まったのは1999年（国旗及び国歌に関する法律）。正式な名前は「日章旗」。"
+  },
+  {
+   "date": "2026-11-29",
+   "cat": "録音の日",
+   "catKey": "rec",
+   "title": "今週の1枚を1分で話す",
+   "q": null,
+   "a": null,
+   "en": "Let me tell you something interesting about Japan.",
+   "enJa": "話し始めの一言。これで止まりにくくなる",
+   "rec": true,
+   "steps": [
+    "今週のカードから話しやすい1枚を選ぶ（おすすめ：雷門か拍手）。",
+    "英語で1分話して録音。カードを見ずに話す。",
+    "3秒以上止まった回数を数えて、19:10のチェックで送る。先週の回数と比べる。"
+   ],
+   "fact": null
+  }
+ ]
+}
