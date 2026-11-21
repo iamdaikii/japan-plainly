@@ -27,23 +27,51 @@ function todayStr() {
 function pickDay(data) {
   const t = todayStr();
   const days = data.days;
-  return days.find(d => d.date === t) || (t < days[0].date ? days[0] : days[days.length - 1]);
+  const ds = days.filter(d => !d.req);
+  return ds.find(d => d.date === t) || (t < ds[0].date ? ds[0] : ds[ds.length - 1]);
 }
+
+// 復習：1・3・7・14・30・60日前の問題から1つ（忘れたころに出す）
+function addDays(str, n) {
+  const d = new Date(str + "T12:00:00");
+  d.setDate(d.getDate() + n);
+  const f = new DateFormatter(); f.dateFormat = "yyyy-MM-dd";
+  return f.string(d);
+}
+function pickReview(data) {
+  const t = todayStr();
+  const past = data.days.filter(d => d.q && d.date < t);
+  if (!past.length) return null;
+  for (const o of [1, 3, 7, 14, 30, 60]) {
+    const hit = past.find(d => d.date === addDays(t, -o));
+    if (hit && o > 1) return Object.assign({ ago: o }, hit);
+  }
+  const hit1 = past.find(d => d.date === addDays(t, -1));
+  if (hit1) return Object.assign({ ago: 1 }, hit1);
+  const n = Math.floor(Date.parse(t) / 86400000);
+  const r = past[n % past.length];
+  return Object.assign({ ago: null }, r);
+}
+function reviewMode() { return new Date().getHours() >= 12; }
 
 function nextRefresh() {
   const d = new Date();
+  const now = new Date();
   d.setHours(3, 0, 0, 0);
-  if (d <= new Date()) d.setDate(d.getDate() + 1);
+  if (d > now) return d;
+  d.setHours(12, 0, 0, 0);
+  if (d > now) return d;
+  d.setDate(d.getDate() + 1); d.setHours(3, 0, 0, 0);
   return d;
 }
 
-function buildWidget(day) {
+function buildWidget(day, isReview) {
   const w = new ListWidget();
   w.backgroundColor = new Color(COLORS[day.catKey] || "#1d2321");
   w.setPadding(14, 16, 14, 16);
   w.refreshAfterDate = nextRefresh();
 
-  const label = w.addText(day.rec ? "今日は1分録音の日" : "今日のクイズ ・ " + day.cat);
+  const label = w.addText(isReview ? "復習 ・ " + (day.ago ? day.ago + "日前" : "前") + "の問題" : day.rec ? "今日は1分録音の日" : "今日のクイズ ・ " + day.cat);
   label.font = Font.boldSystemFont(11);
   label.textColor = new Color("#ffffff", 0.8);
   w.addSpacer(6);
@@ -63,7 +91,19 @@ function buildWidget(day) {
   return w;
 }
 
-async function showInApp(day, data) {
+async function showInApp(day, data, isReview, today) {
+  if (isReview) {
+    const a = new Alert();
+    a.title = day.q;
+    a.message = "答え：" + day.a + "\n\n" + day.en;
+    a.addAction("この回のレッスンを読み直す");
+    a.addAction("今日のレッスンを開く");
+    a.addCancelAction("OK");
+    const r = await a.presentAlert();
+    if (r === 0) return showInApp(day, data, false);
+    if (r === 1) return showInApp(today, data, false);
+    return;
+  }
   // タップするとレッスン全文（読み物・図・英語）をアプリ内で表示
   if (day.html) {
     const wv = new WebView();
@@ -85,11 +125,14 @@ if (!data) {
   w.addText("朝の1枚：通信できるときに更新されます");
   Script.setWidget(w);
 } else {
-  const day = pickDay(data);
+  const today = pickDay(data);
+  const rev = pickReview(data);
+  const useReview = rev && (reviewMode() || today.rec);
+  const day = useReview ? rev : today;
   if (config.runsInWidget) {
-    Script.setWidget(buildWidget(day));
+    Script.setWidget(buildWidget(day, useReview));
   } else {
-    await showInApp(day, data);
+    await showInApp(day, data, useReview, today);
   }
 }
 Script.complete();
