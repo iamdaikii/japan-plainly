@@ -71,7 +71,7 @@ function buildWidget(day, isReview) {
   w.setPadding(14, 16, 14, 16);
   w.refreshAfterDate = nextRefresh();
 
-  const label = w.addText(isReview ? "復習 ・ " + (day.ago ? day.ago + "日前" : "前") + "の問題" : day.rec ? "今日は1分録音の日" : "今日のクイズ ・ " + day.cat);
+  const label = w.addText(isReview ? "復習 ・ " + (day.ago ? day.ago + "日前" : "前") + "の問題" : day.rec ? "今日は英文テストの日" : "今日のクイズ ・ " + day.cat);
   label.font = Font.boldSystemFont(11);
   label.textColor = new Color("#ffffff", 0.8);
   w.addSpacer(6);
