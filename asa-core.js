@@ -83,7 +83,7 @@ function buildWidget(day, isReview) {
   main.lineLimit = 3;
   w.addSpacer();
 
-  const en = w.addText(day.en);
+  const en = w.addText(day.enShort ? "口パク10回 ▶ " + day.enShort : day.en);
   en.font = Font.mediumSystemFont(11);
   en.textColor = new Color("#ffffff", 0.9);
   en.lineLimit = 2;
