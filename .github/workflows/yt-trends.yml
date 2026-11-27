@@ -1,0 +1,39 @@
+name: yt-trends
+# Daily: find street-interview videos that are doing unusually well.
+# Results go to the separate branch "yt-trends-data" (latest.md / latest.json),
+# so the site branch is untouched.
+on:
+  schedule:
+    - cron: "30 17 * * *"   # 02:30 JST, before the 03:15 morning summary
+  workflow_dispatch:
+  push:
+    branches: [claude/project-thread-ec50g2]
+    paths: ["tools/yt-trends/**", ".github/workflows/yt-trends.yml"]
+permissions:
+  contents: write
+concurrency: yt-trends
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out data branch
+        run: |
+          if git ls-remote --exit-code --heads origin yt-trends-data >/dev/null; then
+            git fetch --depth 1 origin yt-trends-data
+            git worktree add data FETCH_HEAD
+          else
+            git worktree add --detach data
+            cd data && git checkout --orphan tmp && git rm -rfq . && cd ..
+          fi
+      - name: Fetch
+        run: python3 tools/yt-trends/fetch.py tools/yt-trends/channels.json data
+      - name: Save
+        run: |
+          cd data
+          git config user.name "yt-trends-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "yt-trends $(date -u +%F)" || exit 0
+          git push origin HEAD:refs/heads/yt-trends-data
