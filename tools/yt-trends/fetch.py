@@ -28,6 +28,9 @@ NS = {"a": "http://www.w3.org/2005/Atom",
 NOW = datetime.now(timezone.utc)
 WINDOW = timedelta(days=7)
 MIN_RATIO = 1.5
+MIN_VIEWS = 3000      # ignore tiny numbers
+PER_CHANNEL = 2       # keep the list varied
+RELEVANT = re.compile(r"interview|asking|asked|street|strangers|people|japan|tokyo|osaka|english|foreigner|tourist", re.I)
 
 
 def get(url, tries=3):
@@ -164,18 +167,24 @@ def main():
             if NOW - pub > WINDOW or not med:
                 continue
             ratio = v["views"] / med
-            if ratio >= MIN_RATIO:
+            if ratio >= MIN_RATIO and v["views"] >= MIN_VIEWS:
                 v.update(ratio=round(ratio, 1), median=int(med), group=ch["group"],
                          days_old=(NOW - pub).days)
                 outliers.append(v)
         time.sleep(1)
     outliers.sort(key=lambda v: v["ratio"], reverse=True)
+    per, kept = {}, []
+    for v in outliers:
+        per[v["channel"]] = per.get(v["channel"], 0) + 1
+        if per[v["channel"]] <= PER_CHANNEL:
+            kept.append(v)
+    outliers = kept
 
     found, seen = [], set()
     for q in cfg.get("search_queries", []):
         try:
             for v in search_week(q):
-                if v["id"] not in seen:
+                if v["id"] not in seen and RELEVANT.search(v["title"]):
                     seen.add(v["id"])
                     found.append(v)
         except Exception as e:  # noqa: BLE001
