@@ -1,0 +1,26 @@
+{
+  "_note": "Street-interview channels to watch. Use a channel_id (UC...) when known, otherwise an @handle. Unresolvable entries are listed in the report so they can be fixed.",
+  "channels": [
+    {"name": "Tokyo Interviews", "id": "UC7F7-q--0WX6-9gPJ8MTgVw", "group": "japan"},
+    {"name": "That Japanese Man Yuta", "handle": "@ThatJapaneseManYuta", "group": "japan"},
+    {"name": "Ask Japanese", "handle": "@AskJapanese", "group": "japan"},
+    {"name": "Asian Boss", "handle": "@AsianBoss", "group": "japan"},
+    {"name": "Paolo fromTOKYO", "handle": "@paolofromtokyo", "group": "japan"},
+    {"name": "Tokyo Lens", "handle": "@tokyolens", "group": "japan"},
+    {"name": "Ted Zhar", "handle": "@tedzhar", "group": "general"},
+    {"name": "Meet Cutes NYC", "handle": "@meetcutesnyc", "group": "general"},
+    {"name": "The School of Hard Knocks", "handle": "@theschoolofhardknocks", "group": "general"},
+    {"name": "Recess Therapy", "handle": "@recesstherapy", "group": "general"},
+    {"name": "Shan Rizwan", "handle": "@shanrizwan", "group": "general"},
+    {"name": "What's Poppin", "handle": "@whatspoppinshow", "group": "general"},
+    {"name": "Chris Stocks", "handle": "@chrisstocks", "group": "general"},
+    {"name": "stephenmakesvideos", "handle": "@stephenmakesvideos", "group": "general"}
+  ],
+  "search_queries": [
+    "street interview japan",
+    "asking foreigners in japan",
+    "asking tourists in tokyo",
+    "street interview english",
+    "how do you speak english street interview"
+  ]
+}
